@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Invoices</title>
+        <!--Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!--End of Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!--Material Icon-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <!--Custom CSS  -->
+        <link rel="stylesheet" href="style.css">
+        <!--End Custom CSS  -->
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <style>
+            tbody tr td:first-child,
+            tbody tr td:nth-child(7) {
+              color:#2590f1;     /* Optionally change text color for better contrast */
+              text-align: center;
+            }
+
+            .unpaid{
+                color: red; 
+                box-sizing: border-box;
+                border: 10px solid red;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="grid-container">
+            <header class="header">
+                <div class="header">
+                    <div class="menu" id="menu">
+                        <i class="fa fa-align-left" aria-hidden="true"></i>
+                    </div>
+                    <form class="search-container">
+                        <input type="text" id="search-bar" placeholder="Search...">
+                        <a href="#">
+                            <img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png">
+                        </a>
+                    </form>
+                    <div class="create">
+                        <i class="fa-solid fa-circle-plus" id="circle"></i>
+                    </div>
+                </div>
+                <div class="demo" id="demi">Customer Area</div>
+                <div class="share">
+                    <i class="fa-solid fa-share-nodes" id="share"></i>
+                </div>
+                <div class="check">
+                    <i class="fa-solid fa-check" id="check"></i>
+                </div>
+                <div class="account">
+                    <i class="fa-solid fa-user-large" id="account"></i>
+                </div>
+                <div class="schedule">
+                    <i class="fa-regular fa-clock" id="schedule"></i>
+                </div>
+                <div class="notification">
+                    <i class="fa-regular fa-bell" id="notification"></i>
+                </div>
+            </header>
+            <!-- End Header -->
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="logo" id="">
+                    <img src="images/logo (1).png" alt=" ">
+                </div>
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-house"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-regular fa-user"></i>
+                            Customers
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="dropdown-toggle" id="dropdown-toggle-1">
+                            <i class="fa-solid fa-receipt"></i>
+                            Sales
+                            <i class="fa-solid fa-chevron-left" id="one"></i>
+                        </a>
+                        <ul class="dropdown-menu" id="dropdown-menu-1">
+                            <br>
+                            <li style="list-style: none;">Proposals</li>
+                            <br>
+                            <li style="list-style: none;">Estimates</li>
+                            <br>
+                            <li style="list-style: none; background-color: #2b65e8; color: white; border-radius: 7px; height: 20px; width: 70px;">Invoices</li>
+                            <br>
+                            <li style="list-style: none;">Payments</li>
+                            <br>
+                            <li style="list-style: none;">Credits Notes</li>
+                            <br>
+                            <li style="list-style: none;">Items</li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-repeat"></i>
+                            Subscriptions
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-regular fa-file-lines"></i>
+                            Expenses
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-file-contract"></i>
+                            Contracts
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-chart-gantt"></i>
+                            Projects
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-regular fa-circle-check"></i>
+                            Tasks
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-life-ring"></i>
+                            Support
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa fa-tty" aria-hidden="true"></i>
+                            Leads
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-regular fa-file"></i>
+                            Estimate Request
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-regular fa-folder-closed"></i>
+                            Knowledge Base
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="dropdown-toggle" id="dropdown-toggle-2">
+                            <i class="fa-solid fa-gears" id="utilities"></i>
+                            Utilities
+                            <i class="fa-solid fa-chevron-left" id="one"></i>
+                        </a>
+                        <ul class="dropdown-menu" id="dropdown-menu-2">
+                            <br>
+                            <li style="list-style: none;">Media</li>
+                            <br>
+                            <li style="list-style: none;">Bulks PDF Export</li>
+                            <br>
+                            <li style="list-style: none;">CSV  Export</li>
+                            <br>
+                            <li style="list-style: none;">Calendar</li>
+                            <br>
+                            <li style="list-style: none;">Announcements</li>
+                            <br>
+                            <li style="list-style: none;">Goals</li>
+                            <br>
+                            <li style="list-style: none;">Activy Log</li>
+                            <br>
+                            <li style="list-style: none;">Surveys</li>
+                            <br>
+                            <li style="list-style: none;">Data Backup</li>
+                            <br>
+                            <li style="list-style: none;">Ticket Pipe Log</li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" class="dropdown-toggle" id="dropdown-toggle-3">
+                            <i class="fa-solid fa-chart-bar"></i>
+                            Reports
+                            <i class="fa-solid fa-chevron-left" id="one"></i>
+                        </a>
+                        <ul class="dropdown-menu" id="dropdown-menu-3">
+                            <br>
+                            <li style="list-style: none;">Sales</li>
+                            <br>
+                            <li style="list-style: none;">Expenses</li>
+                            <br>
+                            <li style="list-style: none;">Expenses vs Income</li>
+                            <br>
+                            <li style="list-style: none;">Leads</li>
+                            <br>
+                            <li style="list-style: none;">Timesheets overview</li>
+                            <br>
+                            <li style="list-style: none;">KB Articles</li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-gear"></i>
+                            Setup
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <!-- End Sidebar -->
+            <!-- Main Content -->
+            <div class="content">
+                <div id="container">
+                    <i class="fa-solid fa-angles-left" id="fourth"></i>
+                    <i class="fa-solid fa-chart-bar" id="fifth"></i>
+                    <i class="fa-solid fa-filter" id="sixth"></i>
+                </div>
+                <div class="add">
+                    <!-- Your existing content -->
+                    <p id="first">
+                        <i class="fa-solid fa-plus"></i>
+                        Create New Invoice
+                    </p>
+                    <p id="second">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        Batch Payments
+                    </p>
+                    <p id="third">
+                        <i class="fa-solid fa-repeat"></i>
+                        Recurring Invoices
+                    </p>
+                </div>
+                <div class="dataTables-wrapper">
+                    <table class="table" id="da">
+                        <br>
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Amount</th>
+                                <th>Total Tax</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Project</th>
+                                <th>Tags</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INV-001</td>
+                                <td>$400.00</td>
+                                <td>$50.00</td>
+                                <td>2024-03-25</td>
+                                <td>Freirin Chopper</td>
+                                <td></td>
+                                <td></td>
+                                <td>2024-04-15</td>
+                                <td class="unpaid">
+                                    <p style="border: 1px solid red;border-radius: 4px; font-size: 14px; width: 58px;  margin-left: 10px; background-color: #fee6e6;
+                                 text-align:center">Unpaid</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-001</td>
+                                <td>$400.00</td>
+                                <td>$50.00</td>
+                                <td>2024-03-25</td>
+                                <td>Harvey Inc</td>
+                                <td></td>
+                                <td>Build Website</td>
+                                <td>2024-04-15</td>
+                                <td class="unpaid">
+                                    <p style="border: 1px solid red;border-radius: 4px; font-size: 14px; width: 58px;  margin-left: 10px; background-color: #fee6e6;
+                                 text-align:center">Unpaid</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-002</td>
+                                <td>$500.00</td>
+                                <td>$60.00</td>
+                                <td>2024-04-25</td>
+                                <td>Bahringer and Sons</td>
+                                <td></td>
+                                <td></td>
+                                <td>2024-04-15</td>
+                                <td class="cancelled">
+                                    <p style=" border: 1px solid #c1c8ce;border-radius: 4px; font-size: 14px; width: 58px;  margin-left: 10px; background-color: #1e360375; 
+                                    color: rgb(27, 83, 14);
+                                    text-align:center">Paid</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-003</td>
+                                <td>$600.00</td>
+                                <td>$50.00</td>
+                                <td>2024-03-25</td>
+                                <td>Harvey Inc</td>
+                                <td></td>
+                                <td></td>
+                                <td>2024-04-15</td>
+                                <td class="unpaid">
+                                    <p style="border: 1px solid red;border-radius: 4px; font-size: 14px; width: 58px;  margin-left: 10px; background-color: #fee6e6;
+                                 text-align:center">Unpaid</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-004</td>
+                                <td>$600.00</td>
+                                <td>$70.00</td>
+                                <td>2024-05-25</td>
+                                <td>Marvs</td>
+                                <td></td>
+                                <td></td>
+                                <td>2024-04-15</td>
+                                <td class="cancelled">
+                                    <p style=" border: 1px solid #c1c8ce;border-radius: 4px; font-size: 14px; width: 75px;  margin-left: 10px; background-color: #e9eaec; color: rgb(10, 5, 5); 
+                                text-align:center">Cancelled</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-005</td>
+                                <td>$500.00</td>
+                                <td>$60.00</td>
+                                <td>2024-04-25</td>
+                                <td>Bahringer and Sons</td>
+                                <td></td>
+                                <td></td>
+                                <td>2024-04-15</td>
+                                <td class="cancelled">
+                                    <p style=" border: 1px solid #c1c8ce;border-radius: 4px; font-size: 14px; width: 58px;  margin-left: 10px; background-color: #1e360375; 
+                                color: rgb(27, 83, 14);
+                                text-align:center">Paid</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-006</td>
+                                <td>$600.00</td>
+                                <td>$70.00</td>
+                                <td>2024-05-25</td>
+                                <td>Orbs</td>
+                                <td></td>
+                                <td></td>
+                                <td>2024-04-15</td>
+                                <td class="cancelled">
+                                    <p style=" border: 1px solid 
+                                #d7a690;border-radius: 4px; font-size: 15px; width: 100px;  margin-left: 10px; background-color: 
+                                #6e33171e; color: rgb(8, 1, 1); 
+                                text-align:center">Partially Paid</p>
+                                </td>
+                            </tr>
+                            <!-- Sample data rows -->
+                        </tbody>
+                    </table>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                    <script>
+
+const aldrin = document.querySelectorAll('#one');
+
+// Loop through each element in the NodeList
+aldrin.forEach(function(element) {
+  // Add click event listener to each element
+  element.addEventListener("click", function() {
+    // Toggle the "down" class on click
+    this.classList.toggle("down");
+  });
+});
+
+                      $(document).ready(function() {
+                        $('#da').DataTable();
+                      });
+                    </script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+                    <script src="script.js"></script>
+                </body>
+            </html>
